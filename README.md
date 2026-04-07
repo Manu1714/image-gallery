@@ -85,3 +85,35 @@ This uses `nodemon` so the server restarts automatically when you edit `server.j
 - Only `.jpg` and `.png` files are accepted.
 - Maximum file size is **10 MB** per image.
 - Up to **20 images** can be uploaded in a single batch.
+
+---
+
+## ☁️ Deploy to Render
+
+To deploy this project for free on **Render**, follow these steps:
+
+### 1. Push to GitHub
+Create a new GitHub repository and push your code:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git push -u origin main
+```
+
+### 2. Create a New Web Service on Render
+1. Log in to [dashboard.render.com](https://dashboard.render.com).
+2. Click **New +** → **Web Service**.
+3. Connect your GitHub repository.
+4. Configure the settings:
+   - **Name**: `image-gallery` (or any name)
+   - **Environment**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+5. Click **Deploy Web Service**.
+
+### ⚠️ Note on Storage
+Render's **Free Tier** uses ephemeral storage. Any images you upload will be deleted if the server restarts or if you deploy new code. 
+- **Solution**: To keep images permanently, you would need to use a **Render Disk** (paid) or an external storage service like **Cloudinary** or **AWS S3**.
