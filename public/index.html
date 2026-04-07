@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <header>
+    <div class="header-inner">
+      <h1>📷 Image Gallery</h1>
+      <p class="tagline">Upload · View · Manage your photos</p>
+    </div>
+  </header>
+
+  <!-- ── Upload Section ─────────────────────────────────────── -->
+  <section class="upload-section">
+    <div class="upload-card">
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <div class="drop-icon">⬆️</div>
+        <p class="drop-title">Drag & Drop images here</p>
+        <p class="drop-sub">or click to browse files</p>
+        <p class="drop-hint">Supports JPG and PNG · Max 10 MB each</p>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" multiple hidden />
+      </div>
+
+      <!-- Preview Strip -->
+      <div class="preview-strip" id="previewStrip" hidden>
+        <p class="preview-label">Ready to upload:</p>
+        <div class="preview-thumbs" id="previewThumbs"></div>
+        <div class="upload-actions">
+          <button class="btn btn-secondary" id="clearBtn">✕ Clear</button>
+          <button class="btn btn-primary" id="uploadBtn">Upload Photos</button>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-bar" id="progressBar"></div>
+        <p class="progress-text" id="progressText">Uploading…</p>
+      </div>
+
+      <!-- Toast Message -->
+      <div class="toast" id="toast"></div>
+
+    </div>
+  </section>
+
+  <!-- ── Gallery Section ────────────────────────────────────── -->
+  <section class="gallery-section">
+    <div class="gallery-header">
+      <h2 id="galleryTitle">Gallery</h2>
+      <span class="gallery-count" id="galleryCount"></span>
+    </div>
+
+    <!-- Loading Skeleton -->
+    <div class="skeleton-grid" id="skeletonGrid">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" hidden>
+      <span class="empty-icon">🖼️</span>
+      <p>No images yet. Upload some photos above!</p>
+    </div>
+  </section>
+
+  <!-- ── Lightbox ───────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Full size" />
+  </div>
+
+  <!-- ── Delete Confirm Modal ──────────────────────────────── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <p class="modal-text">Delete this image?</p>
+      <p class="modal-sub">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelDelete">Cancel</button>
+        <button class="btn btn-danger" id="confirmDelete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
